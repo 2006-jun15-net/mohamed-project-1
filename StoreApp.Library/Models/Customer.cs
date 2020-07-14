@@ -9,29 +9,19 @@ namespace StoreApp.Library.Models
         public int customerID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Store { get; set; }
+        public List<Order> OrderHistory { get; set; }
 
-        //public List<Orders> OrderHistory { get; set; } = new List<Orders>();
-
-        public Customer(string first, string second)
-        {
-            FirstName = first;
-            LastName = second;
-        }
         public string Name
         {
             get => FirstName + " " + LastName;
-            set
-            {
-                // "value" is the value passed to the setter.
-                if (value.Length == 0)
-                {
-                    // good practice to provide useful messages when throwing exceptions,
-                    // as well as the name of the relevant parameter if applicable.
-                    throw new ArgumentException("Name must not be empty.", nameof(value));
-                }
-                Name = value;
-            }
         }
-        
+        public Customer(string firstname, string lastname)
+        {
+            this.FirstName = firstname;
+            this.LastName = lastname;
+        }
+
+        //Add order, update order history list
     }
 }
