@@ -1,0 +1,70 @@
+﻿@model StoreApp.WebApp.ViewModels.LocationViewModel
+@{
+    ViewData["Title"] = "LocationOrderHistory";
+}
+
+<h1>Location Order History</h1>
+<h4>Select a Location</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="LocationOrderHistory" method="post">
+            <div class="form-group">
+                <select asp-for="LocationId" asp-items="@(new SelectList(@ViewBag.locations,"LocationId","Name"))"></select>
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+</div>
+<div>
+    @{
+        @if (Model.OrderHistory != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            OrderId
+                        </th>
+                        <th>
+                            Customer
+                        </th>
+                        <th>
+                            Location
+                        </th>
+                        <th>
+                            Order Date
+                        </th>
+                        <th>
+                            Total Cost
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderHistory)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderTotal)
+                            </td>
+                            <td>
+                                @Html.ActionLink("ViewDetails", "ViewDetails", new { item.OrderId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
+</div>

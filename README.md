@@ -1,1 +1,2 @@
-# mohamed-project-1
+# mohamed-project1
+Store Application with MVC design pattern

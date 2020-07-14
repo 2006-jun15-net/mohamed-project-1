@@ -1,0 +1,77 @@
+﻿@model StoreApp.WebApp.ViewModels.OrdersViewModel
+
+@{
+    ViewData["Title"] = "ViewDetails";
+}
+
+<h1>Details</h1>
+
+<h4>Order</h4>
+<p id="ErrorMsg">@ViewData["ErrorMsg"]</p>
+<hr />
+@{
+    @if (ViewData["ErrorMsg"] == null)
+    {
+        <div>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.OrderId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Location)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Location)
+                </dd>
+                
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.OrderDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.OrderTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.OrderTotal)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderLine.Keys)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                            <td>
+                                @Model.OrderLine[item]
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <a asp-controller="Home" asp-action="Index">Home</a>
+        </div>
+    }
+}

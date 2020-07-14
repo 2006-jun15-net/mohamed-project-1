@@ -1,0 +1,19 @@
+﻿@model StoreApp.Library.Models.Location
+@{
+    ViewData["Title"] = "Locations";
+}
+
+<h1>Select a Location</h1>
+<p id="ErrorMsg">@TempData["ErrorMsg"]</p>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GetProducts" method="get">
+            <div class="form-group">
+                <select asp-for="Id" asp-items="@(new SelectList(@ViewBag.locations,"Id","Name"))"></select>
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+
+</div>

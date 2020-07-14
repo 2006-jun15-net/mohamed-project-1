@@ -1,0 +1,12 @@
+﻿@model StoreApp.WebApp.ViewModels.CustomerViewModel
+
+@{
+    ViewData["Title"] = "SearchCustomer";
+}
+
+<h2>Enter a Customer Name:</h2>
+<form asp-action="SearchCustomer">
+    <input type="text" name="query" />
+    <button type="submit">Search</button>
+</form>
+<p id="ErrorMsg">@TempData["ErrorMsg"]</p>
